@@ -1,0 +1,8 @@
+pandas
+numpy
+matplotlib
+pyspark
+jupyterlab
+jupyterlab-horizon-theme
+boto3
+awscli
