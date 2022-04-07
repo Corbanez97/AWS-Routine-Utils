@@ -7,11 +7,16 @@ RUN mkdir src
 WORKDIR src/
 COPY . .
 
+##Installing required packages
 RUN pip3 install -r requirements.txt
 
-RUN python3 module.py
-
+##Running test script
+RUN python3 docker_test.py
 RUN rm /src/data/raw_data.csv
+
+##Cloning data repository! P.S.: Do not know if this is a good idea... It is worth a shot... I guess ¯\_(ツ)_/¯
+WORKDIR src/data
+RUN git clone https://github.com/astrocatalogs/sne-2015-2019.git
 
 WORKDIR /src/notebooks
 
