@@ -4,5 +4,7 @@ matplotlib
 pyspark
 jupyterlab
 jupyterlab-horizon-theme
+pip install --upgrade jupyterlab jupyterlab-git
 boto3
 awscli
+sweetviz
