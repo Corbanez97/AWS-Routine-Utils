@@ -1,0 +1,15 @@
+.ipynb_checkpoints/Dockerfile-checkpoint
+.ipynb_checkpoints/requirements-checkpoint.txt
+data/clean_data.csv
+data/.ipynb_checkpoints/raw_data-checkpoint.csv
+data/stage/supernovae.csv
+data/stage/.ipynb_checkpoints/supernovae-checkpoint.csv
+executors/.ipynb_checkpoints/staging_exec-checkpoint.py
+notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
+notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
+notebooks/.ipynb_checkpoints/Data Exploration-checkpoint.ipynb
+routines/test_routine/.ipynb_checkpoints/routine_config-checkpoint.json
+notebooks/.ipynb_checkpoints/Executors-checkpoint.ipynb
+notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
+executors/__pycache__/py_exec.cpython-38.pyc
+notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
