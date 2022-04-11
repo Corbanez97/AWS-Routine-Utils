@@ -1,13 +1,15 @@
 {
 "routine_name": "Test Ingestion with py_exec",
-"tasks": {
+"executors": {
     "StagingExecutor":  {
-        "parent_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/raw_data.csv",
-        "dump_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/clean_data.csv",
-        "archive_or_delete": "delete",
-        "py_exec_path": "/home/corbanez/Documents/Data Engineering using AWS/routines/test_routine/py_exec/py_exec.py",
-        "py_exec_args": {"mapper": {"column1":"name", "column2":"age", "column3":"job"}}
-                        },
-    "sub_tasks": ["transfer", "post_staging"]
+                    "params":{
+                        "parent_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/raw_data.csv",
+                        "dump_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/clean_data.csv",
+                        "archive_or_delete": "delete",
+                        "py_exec_path": "/home/corbanez/Documents/Data Engineering using AWS/routines/test_routine/py_exec",
+                        "py_exec_args": {"mapper": {"column1":"name", "column2":"age", "column3":"job"}}
+                            },
+                    "tasks": ["transfer", "post_staging"]
+                    }
         }
-}
+    }   

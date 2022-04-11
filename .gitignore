@@ -13,3 +13,6 @@ notebooks/.ipynb_checkpoints/Executors-checkpoint.ipynb
 notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
 executors/__pycache__/py_exec.cpython-38.pyc
 notebooks/.ipynb_checkpoints/Course-checkpoint.ipynb
+executors/.ipynb_checkpoints/__init__-checkpoint.py
+**/*.cpython-38..pyc
+.ipynb_checkpoints/.gitignore-checkpoint
