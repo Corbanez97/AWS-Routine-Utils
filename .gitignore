@@ -17,3 +17,10 @@ executors/.ipynb_checkpoints/__init__-checkpoint.py
 **/*.cpython-38..pyc
 .ipynb_checkpoints/.gitignore-checkpoint
 data/sne-2015-2019/
+executors/__pycache__/__init__.cpython-38.pyc
+executors/__pycache__/staging_exec.cpython-38.pyc
+.gitignore
+routines/supernovae/py_exec/__pycache__/py_exec.cpython-38.pyc
+routines/test_routine/py_exec/.ipynb_checkpoints/py_exec-checkpoint.py
+routines/test_routine/py_exec/__pycache__/py_exec.cpython-38.pyc
+routines/supernovae/.ipynb_checkpoints/routine_config-checkpoint.json
