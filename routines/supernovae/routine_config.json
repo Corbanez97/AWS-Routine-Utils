@@ -1,0 +1,15 @@
+{
+    "routine_name": "Supernovae",
+    "executors": {
+        "StagingExecutor":  {
+                        "params":{
+                            "parent_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/sne-2015-2019",
+                            "dump_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/stage/supernovae.csv",
+                            "archive_or_delete": "archive",
+                            "py_exec_path": "/home/corbanez/Documents/Data Engineering using AWS/routines/supernovae/py_exec",
+                            "py_exec_args": {"ignore": ["photometry", "spectra"]}
+                                },
+                        "tasks": ["transfer", "post_staging"]
+                        }
+            }
+        }   

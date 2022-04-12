@@ -1,4 +1,3 @@
-import pandas
 import boto3
 
 
@@ -19,9 +18,7 @@ class StagingExecutor:
         elif self.py_exec_path:
             import sys
             sys.path.insert(1, self.py_exec_path)
-            import routines.test_routine.py_exec.py_exec as py_exec
-            
-            py_exec.test()
+            import py_exec
             
             if not self.py_exec_args:
                 print('Python Executor does not require arguments')
