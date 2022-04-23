@@ -18,6 +18,7 @@ if __name__ == '__main__':
 
     import json
     from executors.staging_exec import StagingExecutor
+    from executors.download_exec import DownloaderExecutor
 
     routine_name = input("Enter routine name: ")
 
