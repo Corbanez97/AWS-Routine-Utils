@@ -1,0 +1,21 @@
+{
+    "routine_name": "DownloadTest",
+    "executors": {
+        "DownloaderExecutor": {
+                        "params":{
+                            "requests_arguments": {"url": "https://www.stats.govt.nz/assets/Uploads/Retail-trade-survey/Retail-trade-survey-September-2020-quarter/Download-data/retail-trade-survey-september-2020-quarter-csv.zip"},
+                            "landing_directory": "../data/landing", 
+                            "unzip": "unzip"
+                                },
+                        "tasks": ["download"]
+                        }
+        ,"StagingExecutor": {
+                        "params":{
+                            "parent_directory": "../data/landing",
+                            "dump_directory": "../data/stage/retail_trade.csv",
+                            "archive_or_delete": "archive"
+                                },
+                        "tasks": ["transfer", "post_staging"]
+                        }
+            }
+        }   
