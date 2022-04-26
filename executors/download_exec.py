@@ -16,6 +16,7 @@ class DownloaderExecutor:
         
     def download(self) -> None:
         self.res = requests.get(**self.requests_arguments)
+        print(self.res)
         
         if self.unzip == 'unzip':
             print('Will have to unzip')
