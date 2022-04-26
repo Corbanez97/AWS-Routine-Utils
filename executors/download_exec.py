@@ -14,7 +14,7 @@ class DownloaderExecutor:
         # self.py_exec_path = py_exec_path
         # self.py_exec_args = py_exec_args
         
-    def download(self):
+    def download(self) -> None:
         self.res = requests.get(**self.requests_arguments)
         
         if self.unzip == 'unzip':
