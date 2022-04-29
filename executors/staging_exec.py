@@ -3,7 +3,8 @@ import boto3
 
 class StagingExecutor:
     
-    def __init__(self, parent_directory: str, dump_directory: str, archive_or_delete: str = "archive", py_exec_path: str = None, py_exec_args: dict = None) -> None:
+    def __init__(self, bucket_name: str,  parent_directory: str, dump_directory: str, archive_or_delete: str = "archive", py_exec_path: str = None, py_exec_args: dict = None) -> None:
+        self.bucket_name = bucket_name
         self.parent = parent_directory
         self.dump = dump_directory
         self.archive_or_delete = archive_or_delete
