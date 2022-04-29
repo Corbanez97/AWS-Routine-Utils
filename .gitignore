@@ -24,3 +24,8 @@ routines/supernovae/py_exec/__pycache__/py_exec.cpython-38.pyc
 routines/test_routine/py_exec/.ipynb_checkpoints/py_exec-checkpoint.py
 routines/test_routine/py_exec/__pycache__/py_exec.cpython-38.pyc
 routines/supernovae/.ipynb_checkpoints/routine_config-checkpoint.json
+executors/__pycache__/__init__.cpython-310.pyc
+executors/__pycache__/download_exec.cpython-310.pyc
+executors/__pycache__/staging_exec.cpython-310.pyc
+.gitignore
+.ipynb_checkpoints/orchestrator-checkpoint.py
