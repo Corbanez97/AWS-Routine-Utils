@@ -7,18 +7,17 @@ class S3Connection:
         self.s3 = s3fs.S3FileSystem(key = key, secret = secret)
         
     def get(self, source_path: str):
-        return self.s3._open(path = source_path, mode = 'rb')
+        return self.s3.open(path = source_path, mode = 'rb')
         
     def upload(self , source_file, final_path: str):
         self.file = source_file
-        self.final_path = self.s3._open(path = final_path, mode = 'wb')
-        self.final_path.write(source_file)
+        self.final_path = self.s3.open(path = final_path, mode = 'wb')
+        return self.final_path.write(source_file)
         
     def move(self, source_path: str, final_path: str):
-        self.source_path = self.s3._open(path = source_path, mode = 'rb')
-        self.final_path = self.s3._open(path = final_path, mode = 'wb')
-        
-        self.final_path.write(self.source_source)
+        self.source_path = self.s3.open(path = source_path, mode = 'rb')
+        self.final_path = self.s3.open(path = final_path, mode = 'wb')
+        return self.final_path.write(self.source_path.read())
     
     def delete(self, source_path: str):
-        return self.s3._rm_file(path = source_path)
+        return self.s3.rm(path = source_path)
