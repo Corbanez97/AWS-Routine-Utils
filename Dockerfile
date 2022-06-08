@@ -11,7 +11,7 @@ COPY . .
 RUN pip3 install -r requirements.txt
 
 ##Running test script
-RUN python3 docker_test.py
+RUN python3 testing/docker_test.py
 RUN rm /src/data/raw_data.csv
 
 WORKDIR /src/notebooks

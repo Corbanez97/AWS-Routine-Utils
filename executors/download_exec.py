@@ -1,30 +1,37 @@
-import requests, zipfile, io
-import boto3
+import shutil
+import requests
+import zipfile
+import io
+import os
+import json
+from connections.s3_connection import S3Connection
 
 class DownloaderExecutor:
-    '''
-    This class creates a downloading object and transports it to a landing folder.
-    '''
     def __init__(self, requests_arguments: dict, landing_directory: str, unzip: str = None) -> None:
         self.requests_arguments = requests_arguments ##A dictionary such as: {"url": URL, "params": PARAMS, ...}
-        self.landing_directory = landing_directory ##With file name in case of unzipped, without in case of zipped
+        self.landing_directory = landing_directory
         self.unzip = unzip
         self.res = None
+        ## this atribute should be set up by the DataLake/DataWarehouse class
+        with open('keys/connex.json', 'r') as temp:
+            connex = json.load(temp)
+        self.s3 = S3Connection(bucket_name = 'lake-s3-dev/', key = connex['DEV']['s3']['key'], secret = connex['DEV']['s3']['secret'])
         
-        # self.py_exec_path = py_exec_path
-        # self.py_exec_args = py_exec_args
         
-    def download(self) -> None:
+    def download(self):
         self.res = requests.get(**self.requests_arguments)
-        print(self.res)
         
-        if self.unzip == 'unzip':
+        if self.unzip == "unzip":
             print('Will have to unzip')
             temp = zipfile.ZipFile(io.BytesIO(self.res.content))
-            temp.extractall(self.landing_directory)
-            
+            temp.extractall('../data/temp/' + self.landing_directory.split("/")[-2] + '/')
+            extracted_files = os.listdir('../data/temp/' + self.landing_directory.split("/")[-2] + '/')
+            for file in extracted_files:
+                with open('../data/temp/' + self.landing_directory.split("/")[-2] + '/' + file, 'rb') as data:
+                    self.s3.upload(data.read(), self.s3.bucket_name + self.landing_directory)
+            shutil.rmtree('../data/temp/' + self.landing_directory.split("/")[-2])
             
         elif not self.unzip:
-            print('Will not unzip')
-            with open(self.landing_directory, 'wb') as temp:
-                temp.write(self.res.content)
+            print('Does not unzip')
+            self.s3 = S3Connection(bucket_name = 'lake-s3-dev', key = connex['DEV']['s3']['key'], secret = connex['DEV']['s3']['secret'])
+            self.s3.upload(self.res.content, self.s3.bucket_name + self.landing_directory)

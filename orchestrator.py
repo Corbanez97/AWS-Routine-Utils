@@ -1,4 +1,5 @@
 import json
+# from multiprocessing.connection import Client
 from executors.staging_exec import StagingExecutor
 from executors.download_exec import DownloaderExecutor
 
@@ -7,14 +8,14 @@ class Orchestrator:
     def __init__(self, routine_config: dict) -> None:
         self.routine_config = routine_config
     
-    def run_executors(self):
+    def run_executors(self) -> None:
         for executor in self.routine_config['executors']:
             self.executor_name = executor
             klass = globals()[self.executor_name]
             self.executor = klass(**self.routine_config['executors'][self.executor_name]['params'])
             self.run_tasks()
-            
-    def run_tasks(self):
+    
+    def run_tasks(self) -> None:
         for task in self.routine_config['executors'][self.executor_name]['tasks']:
             getattr(self.executor, task)()
 
