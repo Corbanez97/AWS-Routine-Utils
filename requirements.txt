@@ -7,3 +7,4 @@ jupyterlab-horizon-theme
 boto3
 awscli
 sweetviz
+s3fs
