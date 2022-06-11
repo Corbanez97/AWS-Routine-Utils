@@ -7,7 +7,9 @@ class StagingExecutor:
         self.source_path = source_path
         self.final_path = final_path
         self.archive_or_delete = archive_or_delete
-        self.py_exec_path = py_exec_path
+
+        ## The
+        self.py_exec_path = py_exec_path ##routines/routine_name/py_exec
         self.py_exec_args = py_exec_args
         ## this atribute should be set up by the DataLake/DataWarehouse class
         with open('keys/connex.json', 'r') as temp:
@@ -21,16 +23,13 @@ class StagingExecutor:
             self.s3.move(self.s3.bucket_name + self.source_path, self.s3.bucket_name + self.final_path)
             
         elif self.py_exec_path:
-            import sys
-            sys.path.insert(1, self.py_exec_path)
-            import py_exec
+            import importlib
+            print(self.py_exec_path)
+            #sys.path.append(os.path.join(os.path.dirname(sys.path[0]), self.py_exec_path))
+            py_exec = importlib.import_module(self.py_exec_path.replace("/", "."))
             
-            if not self.py_exec_args:
-                print('Python Executor does not require arguments')
-            
-            elif self.py_exec_args:
-                print(f'Python Executor is running with the following parameters:\n{self.py_exec_args}')
-                py_exec.main(self.parent, self.dump, **self.py_exec_args)
+            self.final_bytes = py_exec.main(bytes = self.s3.get(self.s3.bucket_name + self.source_path).read(), **self.py_exec_args)
+            self.s3.upload(self.final_bytes, self.s3.bucket_name + self.final_path)
                 
     def post_staging(self) -> None:
                 
