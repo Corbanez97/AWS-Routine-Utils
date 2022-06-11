@@ -3,10 +3,10 @@
 "executors": {
     "StagingExecutor":  {
                     "params":{
-                        "parent_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/raw_data.csv",
-                        "dump_directory": "/home/corbanez/Documents/Data Engineering using AWS/data/clean_data.csv",
+                        "source_path": "landing/py_exec_restructure/raw_data.csv",
+                        "final_path": "stage/py_exec_restructure/transformed_data.csv",
                         "archive_or_delete": "delete",
-                        "py_exec_path": "/home/corbanez/Documents/Data Engineering using AWS/routines/test_routine/py_exec",
+                        "py_exec_path": "routines/test_routine/py_exec/py_exec",
                         "py_exec_args": {"mapper": {"column1":"name", "column2":"age", "column3":"job"}}
                             },
                     "tasks": ["transfer", "post_staging"]
