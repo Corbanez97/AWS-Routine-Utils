@@ -6,5 +6,5 @@ def lambda_handler(event, context):
     orchestrator.run_executors()
     return {
         'statusCode': 200,
-        'body': json.dumps('!')
+        'body': json.dumps('Routine Successfully Executed')
     }
