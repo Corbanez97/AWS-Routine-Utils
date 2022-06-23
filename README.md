@@ -24,6 +24,10 @@ This repository currently has:
 - Routine Orchestrator and Diverse Executors;
 - AWS S3 Connector.
 
+Currently, this framework is capable of creating the following lake architecture:
+
+<div style="text-align:center"><img src="notebooks/images/Pletora Module 01.png" /></div>
+
 ## To-do
 Our next steps are:
 - Complete End-to-End logging system;
